@@ -38,6 +38,24 @@ $router->map('POST', '/users/[i:id]/delete', function ($id) {
 $router->map('GET', '/transactions', function () {
 	require __DIR__ . '/views/transactions/all.php';
 });
+
+$router->map('GET|POST', '/transactions/create', function () {
+	require __DIR__ . '/views/transactions/create.php';
+});
+
+$router->map('GET', '/transactions/[i:id]', function ($id) {
+	require __DIR__ . '/views/transactions/get.php';
+});
+
+$router->map('GET|POST', '/transactions/[i:id]/edit', function($id) {
+    $_GET['id'] = $id;
+    require __DIR__ . '/views/transactions/edit.php';
+});
+
+$router->map('GET', '/transactions/[i:id]/delete', function($id) {
+    $_GET['id'] = $id;
+    require __DIR__ . '/views/transactions/delete.php';
+});
 // End of Route List
 
 // Handle jika request sesuai dengan route yang ditentukan

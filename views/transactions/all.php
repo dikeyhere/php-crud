@@ -1,45 +1,41 @@
 <?php
-require_once '../../vendor/autoload.php';
+    use App\Database\TransactionDAO;
+    use App\Database\UserDAO;
 
-use App\Database\TransactionDAO;
-use App\Database\UserDAO;
-
-$trxDao = new TransactionDAO();
-$userDao = new UserDAO();
-$transactions = $trxDao->all();
+    $transDao = new TransactionDAO();
+    $userDao = new UserDAO();
+    $transactions = $transDao->all();
 ?>
 
-<h2>Daftar Transaksi</h2>
-<a href="create.php">+ Tambah Transaksi</a>
+<h2>Transaction List</h2>
+<a href="/transactions/create">Create Transaction</a>
 <br><br>
 
-<table border="1" cellpadding="8" cellspacing="0">
+<table cellpadding="8" cellspacing="0">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nama User</th>
+            <th>User Name</th>
             <th>Amount</th>
-            <th>Jenis Transaksi</th>
-            <th>Tanggal</th>
-            <th>Aksi</th>
+            <th>Transaction Type</th>
+            <th>Created At</th>
         </tr>
     </thead>
+    
     <tbody>
-        <?php foreach ($transactions as $trx): 
-            $user = $userDao->get($trx->getUserId());
+        <?php foreach ($transactions as $trans):
+            $user = $userDao->get($trans->getUserId());
         ?>
             <tr>
-                <td><?= $trx->getId() ?></td>
-                <td><?= htmlspecialchars($user ? $user->getName() : 'User tidak ditemukan') ?></td>
-                <td><?= $trx->getAmount() ?></td>
-                <td><?= ucfirst($trx->getTransactionType()) ?></td>
-                <td><?= $trx->getCreatedAt() ?></td>
+                <td><?= htmlspecialchars($user->getName()) ?></td>
+                <td><?= $trans->getAmount() ?></td>
+                <td><?= ucfirst($trans->getTransactionType()) ?></td>
+                <td><?= $trans->getCreatedAt() ?></td>
                 <td>
-                    <a href="get.php?id=<?= $trx->getId() ?>">Detail</a> |
-                    <a href="edit.php?id=<?= $trx->getId() ?>">Edit</a> |
-                    <a href="delete.php?id=<?= $trx->getId() ?>" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                    <a href="/transactions/<?= $trans->getId() ?>">Detail</a> |
+                    <a href="/transactions/<?= $trans->getId() ?>/edit">Edit</a> |
+                    <a href="/transactions/<?= $trans->getId() ?>/delete">Hapus</a>
                 </td>
             </tr>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </tbody>
 </table>

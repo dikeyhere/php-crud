@@ -9,7 +9,7 @@ class UserDAO extends Connection {
         $data = self::query($sql);
         $users = [];
         foreach ($data as $row) {
-            $users[] = new User($row['id'], $row['email'], $row['password'], $row['name'], $row['created_at']);
+            $users[] = new User($row['id'], $row['email'], $row['password'], $row['name'], $row['created_at'], $row['balance']);
         }
         return $users;
     }
@@ -20,7 +20,7 @@ class UserDAO extends Connection {
         $data = self::query($sql, $params);
      
         if (count($data) > 0) {
-            return new User($data[0]['id'], $data[0]['email'], $data[0]['password'], $data[0]['name'], $data[0]['created_at']);
+            return new User($data[0]['id'], $data[0]['email'], $data[0]['password'], $data[0]['name'], $data[0]['created_at'], $data[0]['balance']);
         }
         return null;
      }

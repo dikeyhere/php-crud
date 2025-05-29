@@ -3,15 +3,16 @@ namespace App\Models;
 
 class User
 {
-    private $id, $email, $password ,$name, $created_at;
+    private $id, $email, $password ,$name, $created_at, $balance;
 
-    public function __construct($id, $email, $password, $name, $created_at)
+    public function __construct($id, $email, $password, $name, $created_at, $balance)
     {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
         $this->created_at = $created_at;
+        $this->balance = $balance;
     }
 
     public function getId()
@@ -37,5 +38,9 @@ class User
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    public function getBalance(): int {
+        return $this->balance;
     }
 }

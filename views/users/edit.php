@@ -8,13 +8,14 @@
     $email = $user->getEmail();
     $password = $user->getPassword();
     $name = $user->getName();
+    $balance = $user->getBalance();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['name'];
 
-        $user = $userDao->update(new User($id, $email, $password, $name, null));
+        $user = $userDao->update(new User($id, $email, $password, $name, null, $balance));
         header("Location: /users");
     }
 ?>
@@ -31,6 +32,9 @@
 
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" value="<?= $name ?>"><br><br>
+
+    <label for="balance">Balance:</label><br>
+    <input type="number" id="balance" name="balance" value="<?= $balance ?>" readonly><br><br>
 
     <button type="submit">Save</button>
 </form>

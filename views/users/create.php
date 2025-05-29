@@ -12,7 +12,7 @@
         $name = $_POST['name'];
 
         $userDao = new UserDAO();
-        $user = $userDao->create(new User(null, $email, $password, $name, null));
+        $user = $userDao->create(new User(null, $email, $password, $name, null, null));
         header("Location: /users");
     }
 ?>
