@@ -11,10 +11,11 @@
 
 <h2>Transaction Details</h2>
 
-<p><strong>Transaction ID:</strong> <?= $trans->getId() ?></p>
-<p><strong>User Name:</strong> <?= htmlspecialchars($user->getName()); ?></p>
-<p><strong>Amount:</strong> <?= $trans->getAmount(); ?></p>
-<p><strong>Transaction Type:</strong> <?= ucfirst($trans->getTransactionType()) ?></p>
-<p><strong>Created At:</strong> <?= $trans->getCreatedAt() ?></p>
+<p><b>Transaction ID:</b> <?= $trans->getId() ?></p>
+<p><b>User ID:</b> <?= $trans->getUserId() ?></p>
+<p><b>User Name:</b> <?= htmlspecialchars($user->getName()); ?></p>
+<p><b>Amount:</b> <?= $trans->getAmount(); ?></p>
+<p><b>Transaction Type:</b> <?= ucfirst($trans->getTransactionType()) ?></p>
+<p><b>Created At:</b> <?= $trans->getCreatedAt() ?></p>
 
-<a href="/transactions">Kembali</a>
+<a href="/transactions">Back</a>

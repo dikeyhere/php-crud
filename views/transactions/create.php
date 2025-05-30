@@ -10,13 +10,12 @@
     $errors = $_SESSION['errors'] ?? [];
     unset($_SESSION['errors']);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userId = $_POST['user_id'];
         $amount = isset($_POST['amount']) ? (int) $_POST['amount'] : 0;
         $type = $_POST['transaction_type'];
 
         $user = $userDao->get((int)$userId);
-
         $db = \App\Database\Connection::getDB();
         $blc = $db->prepare("SELECT balance FROM users WHERE id = ?");
         $blc->execute([$userId]);
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             header("Location: /transactions");
         }
-}
+    }
 ?>
 
 <h2>Add Transaction</h2>

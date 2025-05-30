@@ -33,7 +33,7 @@
                 <td>
                     <a href="/transactions/<?= $trans->getId() ?>">Detail</a> |
                     <a href="/transactions/<?= $trans->getId() ?>/edit">Edit</a> |
-                    <a href="/transactions/<?= $trans->getId() ?>/delete">Hapus</a>
+                    <a href="/transactions/<?= $trans->getId() ?>/delete">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>

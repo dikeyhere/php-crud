@@ -23,7 +23,7 @@
 <h2>Transaction Edit</h2>
 <form method="post" action="/transactions/<?= $trans->getId() ?>/edit">
     <p>User ID: <input type="text" value="<?= $trans->getUserId(); ?>" readonly></p>
-    <p>Name: <input type="text" value="<?= htmlspecialchars($user->getName()); ?>" readonly></p>
+    <p>User Name: <input type="text" value="<?= htmlspecialchars($user->getName()); ?>" readonly></p>
     <p>Amount: <input type="text" value="<?= $trans->getAmount(); ?>" readonly></p>
     <p>Transaction Type: <input type="text" value="<?= ucfirst($trans->getTransactionType()); ?>" readonly></p>
     <p>Created At:
